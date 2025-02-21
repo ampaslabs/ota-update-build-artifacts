@@ -9,6 +9,7 @@ mv /etc/myapp/config.json /etc/myapp/config.json.bkup
 # update the new config file
 mv config.json /etc/myapp/config.json
 
+# start the app service
 systemctl start myapp
 
 # verify the app is working fine

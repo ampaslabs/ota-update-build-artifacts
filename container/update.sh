@@ -90,7 +90,7 @@ echo "${DOCKER_HUB_ACCESS_TOKEN}" | $($DOCKER_HUB_LOGIN_COMMAND)
 # echo "${AWS_SECRET_ACCESS_KEY}" | $($AWS_ECR_LOGIN_COMMAND)  
 
 
-# To update a list of containers, add a for loop to the following code block, as shown below:
+# To update a list of containers, use the below for-loop example:
 #
 # CONTAINERS=$1
 # LATEST_IMAGE_NAMES=$2
@@ -111,7 +111,7 @@ RUNNING_IMAGE_HASH="$(docker inspect --format "{{.Image}}" --type container "${c
     debug_error_exit "Failed retrieving running container's image hash: ${container}"                                                      
     fi                                                                                            
 
-# Pull in the latest version of the container and get the hash                                    
+# Pull the latest version of the container and get the hash                                    
 docker pull "${LATEST_IMAGE_NAME}"                                                              
     if [ $? -eq 0 ]; then                                                                         
     debug_log "docker pull of latest image successful: ${LATEST_IMAGE_NAME}"                                                   

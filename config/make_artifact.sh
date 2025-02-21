@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CONFIG_VERSION=1.0.0
+BUILD_VERSION=1.0.0
 BUILD_DIR="config_$BUILD_VERSION"
 
 # create the artifact build directory
