@@ -1,0 +1,6 @@
+*.tar.gz
+myapp
+*.deb
+
+debian_pkg/myapp/debian_build/
+

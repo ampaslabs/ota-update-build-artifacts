@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # stop the app running as systemd service
-systemctl stopping myapp
+systemctl stop myapp
 
 # backup the existing config file
 mv /etc/myapp/config.json /etc/myapp/config.json.bkup

@@ -4,16 +4,7 @@
 # MyApp Update Workflow Script - Example #1
 #================================================
 
-# stop the app running as systemd service
-systemctl stop myapp
-
-# backup the existing app
-mv /usr/bin/myapp /usr/bin/myapp.bkup
-
-# update the new binary
-mv myapp /usr/bin/myapp
-
-systemctl start myapp
+sudo dpkg -i myapp_*.deb
 
 # verify the app is working fine
 service_name="myapp"
