@@ -4,6 +4,10 @@
 # MyApp Update Workflow Script - Example #1
 #================================================
 
+# backup the existing app
+mv /usr/bin/myapp /usr/bin/myapp.bkup
+
+# update the myapp package
 sudo dpkg -i myapp_*.deb
 
 # verify the app is working fine

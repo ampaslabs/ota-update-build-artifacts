@@ -12,6 +12,7 @@
 int main() {
     while (1) {
         printf("Hello, OTA update!\n");
+        fflush(stdout); // Ensure immediate output
         sleep(600); // in seconds
     }
     return 0;

@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <unistd.h>
 /*
  * To build:
  * gcc myapp.c -o myapp
@@ -10,6 +10,10 @@
  */
 
 int main() {
-    printf("Hello, OTA update!\n");
+    while (1) {
+        printf("Hello, OTA update!\n");
+        fflush(stdout); // Ensure immediate output
+        sleep(600); // in seconds
+    }
     return 0;
 }
