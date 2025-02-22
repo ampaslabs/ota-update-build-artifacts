@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# stop the service
+systemctl stop myapp
+
+# Disable start on reboot
+systemctl disable myapp

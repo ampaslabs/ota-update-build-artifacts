@@ -1,0 +1,9 @@
+[Unit]
+Description=myapp service
+
+[Service]
+ExecStart=/usr/bin/myapp
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

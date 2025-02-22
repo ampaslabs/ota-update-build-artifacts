@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Delete what the app created and is unknown to dpkg
+# rm /var/log/myapp.log

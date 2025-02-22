@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# start the service
+systemctl start myapp
+# Enable start on reboot
+systemctl enable myapp

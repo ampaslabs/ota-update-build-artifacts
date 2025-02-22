@@ -1,0 +1,7 @@
+Package: myapp
+Version: 1.0.0
+Maintainer: Your Name <your.email@example.com>
+Build-Depends: gcc
+Architecture: arm64
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: A simple program that prints "Hello, OTA update!" every 10 minutes.
