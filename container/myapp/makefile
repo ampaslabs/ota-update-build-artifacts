@@ -1,8 +1,8 @@
-DOCKER_USER = yourusername
-DOCKER_REPO = myapp
-VERSION = 1.0.0
+DOCKER_USER = "dockerhub-username"
+DOCKER_REPO = "myapp"
+VERSION = "1.0.0"
 
-all: build push
+all: myapp docker-build push
 
 myapp:
         gcc -o myapp myapp.c
@@ -10,7 +10,7 @@ myapp:
 docker-build:
         docker build -t $(DOCKER_USER)/$(DOCKER_REPO):$(VERSION) .
 
-push: docker-build
+push: 
         docker login
         docker push $(DOCKER_USER)/$(DOCKER_REPO):$(VERSION)
 

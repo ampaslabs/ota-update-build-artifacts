@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#================================================
+# MyApp Container Update Workflow Script
+#================================================
+
 DOCKER_USER="dockerhub-username"
 DOCKER_REPO="myapp"
 NEW_VERSION="1.0.0"
@@ -37,9 +41,8 @@ rollback() {
     # Delete the new image
     docker image rm "$DOCKER_USER/$DOCKER_REPO:$NEW_VERSION" 2>/dev/null
 
-
     # Run the old container
-    docker run -d "$DOCKER_USER/$DOCKER_REPO:$OLD_VERSION"
+    docker start "$${CONTAINER_NAME}-${OLD_VERSION}" 2>/dev/null
 }
 
 # Main update process
