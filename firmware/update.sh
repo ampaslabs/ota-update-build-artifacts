@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#================================================
+# Firmware Update Workflow Script
+#================================================
+
 # The script implements A/B system update with U-Boot boatloader.
 # U-Boot's "bootcmd" should refer to the "bootpart" variable to decide
 # which boot partition to boot from.
@@ -58,6 +62,25 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Download the checksum file
+echo "$(date) - Downloading checksum file..."
+curl -s -o "$CHECKSUM_FILE" "${NEW_ROOTFS_IMAGE}.sha256"
+if [ $? -ne 0 ]; then
+  echo "$(date) - Error downloading checksum file."
+  rm "$TEMP_IMAGE"
+  rm "$CHECKSUM_FILE"
+  exit 1
+fi
+
+# Verify checksum
+echo "$(date) - Verifying checksum..."
+if ! sha256sum -c "$CHECKSUM_FILE" 2>/dev/null | grep -q "OK"; then
+  echo "$(date) - Checksum verification failed."
+  rm "$TEMP_IMAGE"
+  rm "$CHECKSUM_FILE"
+  exit 1
+fi
+
 # Determine the target partition
 local current_part=$(get_current_boot_part)
 if [ "$current_part" == "$UBOOT_PART_A_VALUE" ]; then
@@ -77,11 +100,14 @@ dd if="$TEMP_IMAGE" of="$TARGET_ROOTFS" bs=4M status=progress
 if [ $? -ne 0 ]; then
   echo "$(date) - Error writing image to $TARGET_ROOTFS."
   rm "$TEMP_IMAGE"
+  rm "$CHECKSUM_FILE"
   exit 1
 fi
 
-# Clean up the downloaded image
+# Clean up the downloaded image and checksum file
 rm "$TEMP_IMAGE"
+rm "$CHECKSUM_FILE"
+
 
 # Mount the new rootfs to copy health check script
 mkdir -p "$MOUNT_POINT"
