@@ -1,7 +1,7 @@
 # Building Artifacts for SocketXP OTA Update
 [SocketXP](https://www.socketxp.com) is an [IoT device management platform](https://www.socketxp.com/socketxp-iot-device-management-platform) that can be used to remotely manage, monitor, access, update and control IoT or any embedded Linux devices at massive scale.
 
-[SocketXP OTA Update](/iot-ota-update) allows you to upload and deploy your artifacts such as IoT application, debian packages, docker containers, firmware, and configuration files, as software updates on a fleet of remote IoT devices.
+[SocketXP OTA Update](https://www.socketxp.com/iot-ota-update) allows you to upload and deploy your artifacts such as IoT application, debian packages, docker containers, firmware, and configuration files, as software updates on a fleet of remote IoT devices.
 
 Building an artifact is the first step in the OTA update process.
 
